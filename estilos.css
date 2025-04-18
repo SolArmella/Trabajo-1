@@ -1,0 +1,144 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FCDFD1; 
+    color: #333; 
+}
+
+header {
+    background: #FAD4C0; 
+    color: #333; 
+    padding: 20px 0;
+    text-align: center;
+    text-shadow: none; 
+}
+
+header h1 {
+    margin: 0; 
+    font-size: 28px; 
+    color: black;}
+
+nav {
+    background: #FAD4C0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #333; 
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff6f61; 
+}
+
+.dropdown {
+    display: none; 
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9); 
+    border: 1px solid #FAD4C0; 
+    z-index: 1000;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+nav ul li:hover .dropdown {
+    display: block; 
+}
+
+.dropdown li {
+    display: block; 
+    text-align: left; 
+}
+
+.dropdown li a {
+    padding: 10px 20px; 
+    display: block; 
+    color: #FAD4C0; 
+    transition: background 0.3s, color 0.3s;
+}
+
+.dropdown li a:hover {
+    background: rgba(250, 212, 192, 0.3); 
+    color: #ff6f61;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(250, 212, 192, 0.5); 
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.9); 
+    color: #333; 
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: black; 
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ff6f61; 
+}
+/* contenedor del título */
+.header-title {
+    background-color: #FAD4C0; 
+    padding: 20px;
+    text-align: center;
+    color: black !important;
+}
+
+/* contenedor navbar */
+.header-nav {
+    background-color: #FAD4C0; 
+    padding: 10px;
+
+}
+
+.header-nav nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header-nav nav ul li a {
+    text-decoration: none;
+    color: #333; 
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.header-nav nav ul li a:hover {
+    color: #ff6f61;
+}
