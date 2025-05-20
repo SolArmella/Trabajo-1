@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Coloquio: JavaScript, Funciones y DOM</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { margin: 5px; padding: 5px; }
+    #resultado {
+      margin-top: 20px;
+      border: 1px solid #000;
+      padding: 10px;
+      width: fit-content;
+      min-width: 250px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora</h1>
+  
+  <label for="numero">Ingresa un número:</label>
+  <input type="number" id="numero">
+  
+  <button onclick="calcularDoble()">Doble</button>
+  <button onclick="calcularFactorial()">Factorial</button>
+  <button onclick="esPrimo()">¿Es Primo?</button>
+  
+  <div id="resultado">El resultado se mostrará aquí</div>
+
+  <script>
+    function obtenerNumero() {
+      return parseInt(document.getElementById("numero").value);
+    }
+
+    function mostrarResultado(mensaje) {
+      document.getElementById("resultado").innerText = mensaje;
+    }
+
+    function calcularDoble() {
+      let num = obtenerNumero();
+      if (isNaN(num)) {
+        mostrarResultado("Por favor, ingresa un número válido.");
+        return;
+      }
+      let doble = num * 2;
+      mostrarResultado(`El doble de ${num} es ${doble}`);
+    }
+
+    function calcularFactorial() {
+      let num = obtenerNumero();
+      if (isNaN(num)) {
+        mostrarResultado("Por favor, ingresa un número válido.");
+        return;
+      }
+      if (num < 0) {
+        mostrarResultado("No se puede calcular el factorial de un número negativo.");
+        return;
+      }
+      let factorial = 1;
+      for (let i = 2; i <= num; i++) {
+        factorial *= i;
+      }
+      mostrarResultado(`El factorial de ${num} es ${factorial}`);
+    }
+
+    function esPrimo() {
+      let num = obtenerNumero();
+      if (isNaN(num)) {
+        mostrarResultado("Por favor, ingresa un número válido.");
+        return;
+      }
+      if (num <= 1) {
+        mostrarResultado(`${num} no es primo.`);
+        return;
+      }
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          mostrarResultado(`${num} no es primo.`);
+          return;
+        }
+      }
+      mostrarResultado(`${num} es primo.`);
+    }
+  </script>
+</body>
+</html>

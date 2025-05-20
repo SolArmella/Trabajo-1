@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios JavaScript</title>
+  <style>
+    .resaltado {
+      background-color: yellow;
+      font-weight: bold;
+    }
+    .tarjeta img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+  </style>
+</head>
+<body>
+  <h1>Ejercicios de JavaScript</h1>
+
+  <!-- DOM - Ejercicio 1 -->
+  <h2>DOM - Ejercicio 1: Lista dinámica desde array</h2>
+  <ul id="lista"></ul>
+
+  <!-- DOM - Ejercicio 2 -->
+  <h2>DOM - Ejercicio 2: Modificar contenido por ID</h2>
+  <p id="mensaje">Texto original</p>
+
+  <!-- DOM - Ejercicio 3 -->
+  <h2>DOM - Ejercicio 3: Agregar y quitar clases (clic)</h2>
+  <div id="miDiv" style="cursor:pointer; padding: 10px; border: 1px solid black;">Haz clic aquí</div>
+
+  <!-- DOM - Ejercicio 4 -->
+  <h2>DOM - Ejercicio 4: Formulario dinámico</h2>
+  <form id="formulario">
+    <input type="text" id="nombre" placeholder="Nombre">
+    <button type="submit">Agregar</button>
+  </form>
+  <ul id="listaNombres"></ul>
+
+  <!-- DOM - Ejercicio 5 -->
+  <h2>DOM - Ejercicio 5: Tarjetas desde array de objetos</h2>
+  <div id="tarjetas"></div>
+
+  <script>
+    console.log("====== EJERCICIOS DE ARRAYS ======");
+
+    // ejercicio 1: Filtrar números pares
+    function filtrarPares(array) {
+      return array.filter(num => num % 2 === 0);
+    }
+    console.log("// Arrays - Ejercicio 1: Números pares");
+    console.log(filtrarPares([1, 2, 3, 4, 5, 6]));
+
+    // ejercicio 2: Eliminar duplicados
+    function eliminarDuplicados(array) {
+      return [...new Set(array)];
+    }
+    console.log("// Arrays - Ejercicio 2: Sin duplicados");
+    console.log(eliminarDuplicados([1, 2, 2, 3, 4, 4]));
+
+    // ejercicio 3: Ordenar nombres
+    function ordenarNombres(array) {
+      return array.slice().sort();
+    }
+    console.log("// Arrays - Ejercicio 3: Ordenar nombres");
+    console.log(ordenarNombres(["Lucía", "Ana", "Pedro", "Carlos"]));
+
+    // ejercicio 4: Sumar elementos
+    function sumarArray(array) {
+      return array.reduce((total, num) => total + num, 0);
+    }
+    console.log("// Arrays - Ejercicio 4: Suma total");
+    console.log(sumarArray([1, 2, 3, 4]));
+
+    // ejercicio 5: Buscar elemento
+    function buscarElemento(array, elemento) {
+      return array.indexOf(elemento);
+    }
+    console.log("// Arrays - Ejercicio 5: Buscar 'Luis'");
+    console.log(buscarElemento(["Ana", "Luis", "Pedro"], "Luis")); // indice¿?
+    console.log(buscarElemento(["Ana", "Luis", "Pedro"], "Marta")); // -1
+
+    console.log("====== EJERCICIOS DE DOM ======");
+
+    // ejercicio 1: Crear lista dinámica desde array
+    const nombres = ["Ana", "Luis", "Pedro", "Lucía"];
+    const ul = document.getElementById("lista");
+    nombres.forEach(nombre => {
+      const li = document.createElement("li");
+      li.textContent = nombre;
+      ul.appendChild(li);
+    });
+
+    // ejercicio 2: Modificar contenido de un elemento por su ID
+    function modificarTexto(id, nuevoTexto) {
+      const elemento = document.getElementById(id);
+      if (elemento) {
+        elemento.textContent = nuevoTexto;
+      }
+    }
+    modificarTexto("mensaje", "Texto modificado desde JS");
+
+    // ejercicio 3: Agregar y quitar clases al hacer clic
+    const div = document.getElementById("miDiv");
+    div.addEventListener("click", () => {
+      div.classList.toggle("resaltado");
+    });
+
+    // Ejercicio 4: Formulario dinámico
+    const nombresForm = [];
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const input = document.getElementById("nombre");
+      if (input.value.trim()) {
+        nombresForm.push(input.value.trim());
+        const li = document.createElement("li");
+        li.textContent = input.value.trim();
+        document.getElementById("listaNombres").appendChild(li);
+        input.value = "";
+      }
+    });
+
+    // ejercicio 5: Generación de tarjetas con datos
+    const productos = [
+  {
+    nombre: "Proteína",
+    precio: "$50",
+    imagen: "https://acdn-us.mitiendanube.com/stores/837/804/products/20611-17c0ca0d3149ae8f5c16618729035916-640-0.png"
+  },
+  {
+    nombre: "Creatina",
+    precio: "$30",
+    imagen: "https://www.enasport.com/cdn/shop/files/Creapure200g.png?v=1739376497"
+  }
+];
+
+
+    const contenedor = document.getElementById("tarjetas");
+    productos.forEach(producto => {
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "tarjeta";
+      tarjeta.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}" />
+        <p><strong>${producto.nombre}</strong></p>
+        <p>${producto.precio}</p>
+      `;
+      contenedor.appendChild(tarjeta);
+    });
+  </script>
+</body>
+</html>
